@@ -335,7 +335,7 @@ public abstract class AbstractClusterInvoker<T> implements ClusterInvoker<T> {
         InvocationProfilerUtils.releaseDetailProfiler(invocation);
         // todo 应该将校验提前，只有一个实例时，不需要走lb了，
         // 避免了几乎每个实现类，都要check状态
-        LoadBalance loadbalance = initLoadBalance(invokers, invocation);
+        LoadBalance loadbalance  = initLoadBalance(invokers, invocation);
         RpcUtils.attachInvocationIdIfAsync(getUrl(), invocation);
 
         InvocationProfilerUtils.enterDetailProfiler(invocation, () -> "Cluster " + this.getClass().getName() + " invoke.");
